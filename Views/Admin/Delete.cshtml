@@ -1,0 +1,37 @@
+﻿@if (Session["user"] == null)
+{
+    Response.Redirect("~/Home/Index");
+}
+
+@model Traffic_challan.Models.Login
+@{
+    ViewBag.title = "Delete Wardern";
+}
+
+
+<h1> Delete Wardern </h1>
+<h2>Are You Sure You want To delete ? </h2>
+
+<fieldset>
+    <legend>Wardern</legend>
+
+    <div >
+        
+       Name:  @Model.username
+    </div>
+    
+    <div >
+        Password : @Model.password
+    </div>
+    
+    <div >
+        Type : @Model.type
+    </div>
+   
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Admin", "Delete")
+    </p>
+}

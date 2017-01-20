@@ -1,0 +1,126 @@
+﻿@if (Session["user"] == null)
+{
+    Response.Redirect("~/Home/Index");
+}
+@model Traffic_challan.Models.challan
+
+@{
+    ViewBag.Title = "User";
+}
+<style>
+    .i {
+        color:white;
+    }
+    .ty{
+        width:auto;
+    }
+
+</style>
+<style>
+    .sel {
+
+	width: auto; 
+	margin-bottom: 10px; 
+	background: rgba(0,0,0,0.3);
+	border: none;
+	outline: none;
+	padding: 10px;
+	font-size: 13px;
+	color: #fff;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+	border: 1px solid rgba(0,0,0,0.3);
+	border-radius: 4px;
+
+}
+</style>
+<body>
+    
+    <table>
+    <form method="Post">
+        <tr>
+            <td>
+                <label class="i">NAME</label> : 
+            </td>
+            <td>
+                <input class="ty" type="text" placeholder="Name" name="Name" required=""/><br>
+                @Html.ValidationMessageFor(model => model.Name)
+             </td>
+        </tr>
+    
+        <tr>
+            <td>
+                <label class="i">License Number</label>:
+            </td>
+            
+            <td>            
+                <input class="ty" class="i" type="text" placeholder="licenseNumber" name="LicenseNumber" required=""/><br>
+            </td>  
+        </tr>
+
+        <tr>
+            <td>
+                <label class="i">Vehicle Number</label>:
+            </td>
+            <td>     
+                 <input class="ty" type="text" name="VehicleNumber" placeholder="VehicleNumber" required="" /><br>
+            </td> 
+            </tr>
+
+        <tr>
+            <td>
+              <label class="i">Reason</label>:
+             </td>
+           
+            <td>       
+                 <select name="Reason" class="sel" required="">
+                    <option value="Seat belt" selected="">Seat belt</option>
+                    <option value="OverSpeeding">OverSpeeding</option>
+                    <option value="Not stop at Signal">Not stop at Signal</option>
+                    <option value="Wrong parking">Wrong parking</option>
+                    <option value="Use of mobile phone">Use of mobile phone</option>
+                    <option value="Under Age">Under Age</option>
+                </select>
+            </td>
+       </tr>
+        <br />
+
+        <tr>
+            <td>
+                <label class="i">Vehicle</label>:
+            </td>
+            
+            <td>
+                <select name="Vehicle" class="sel" >
+                    <option value="Car" selected="" >Car</option>
+                    <option value="Bike">Bike</option>
+                    <option value="Heavy Vehicles">Heavy Vehicles</option>
+                </select>
+            </td>
+        </tr>
+        <br />
+        <tr>
+            <td>
+            <label class="i">Wardern Name</label>:
+               </td>
+            <td> 
+                <input class="ty" type="text" name="WardernName" value="@Session["user"]" readonly="" placeholder="Wardern Name" required=""/><br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="i">Price</label>:
+            </td>
+            <td>     
+                 <input class="ty" type="text" name="Price" placeholder="Price" required="" /><br>
+            </td> 
+            </tr>
+
+        <tr>
+            <td>
+                <input type="submit" class="button" value="Submit Challan" />
+            </td>
+       </tr>
+    </form>
+ 
+        </table>
+</body>

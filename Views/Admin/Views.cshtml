@@ -1,0 +1,52 @@
+﻿@if (Session["user"] == null)
+{
+    Response.Redirect("~/Home/Index");
+}
+@model List<Traffic_challan.Models.Login>
+
+<table>
+    <tr>
+        <th>
+           Username
+        </th>
+        <th>
+            Password
+        </th>
+        <th>
+            Type
+        </th>
+        <th>
+            Email
+        </th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+           @item.username
+        </td>
+        <td>
+            @item.password
+        </td>
+        
+        <td>
+           @item.type
+        </td>
+
+        <td>
+           @item.email
+        </td>
+        @if(@item.type != "Admin"){
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+        </td>
+        <td>
+             @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+        }
+    </tr>
+}
+
+</table>

@@ -1,0 +1,67 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .sel {
+
+	width: 100%; 
+	margin-bottom: 10px; 
+	background: rgba(0,0,0,0.3);
+	border: none;
+	outline: none;
+	padding: 10px;
+	font-size: 13px;
+	color: #fff;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+	border: 1px solid rgba(0,0,0,0.3);
+	border-radius: 4px;
+
+}
+</style>
+
+<body>
+  <div class="login">
+	<h1>Sign Up</h1>
+    <form method="post" enctype="multipart/form-data" >
+    	<input type="text" name="username" placeholder="username" required="required" />
+        <input type="password" name="password" placeholder="password" required="required" />
+         <select name="type" class="sel">
+                <option value="Wardern">Warden</option>
+                <option value="Admin">Admin</option>
+        </select>
+        <input type="email" id="email" class="email" name="email" placeholder="Email" required="required" />
+        <input type="button"  id="b1" value="Check" />
+        <div id="checking" style="color:red">Checking...</div>
+        <div id="result" style="color:red"></div>
+        <input type="File" name="Picture" required="required" />
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Sign Up</button>
+    </form>
+
+</div>
+  
+    <script src="~/Scripts/index.js"></script>
+    
+     @Scripts.Render("~/bundles/jquery")
+    <script>
+        $(document).ready(function () {
+            $('#checking').hide();
+            $('#b1').click(function () {
+                var userName = $('#email').val();
+                //alert('User Name ='+ userName);
+                $('#checking').show();
+                $.getJSON("/User/CheckUserName?UserName=" + userName, function (data) {
+                    $('#checking').hide();
+                    if (data) {
+                        $('#result').text("User already exists in database");
+                    }
+                    else {
+                        $('#result').text("User Name is available");
+                    }
+                });
+            });
+        });
+    </script>
+
+
+</body>

@@ -1,0 +1,64 @@
+﻿@if (Session["user"] == null)
+{
+    Response.Redirect("~/Home/Index");
+}
+
+@model Traffic_challan.Models.Login
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h1>Edit User</h1>
+
+@using (Html.BeginForm()) {
+   
+
+    <fieldset>
+        <legend>User</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.username)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.username)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.password)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.password)
+           
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.email)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.email)
+           
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.type)
+        </div>
+        <div class="editor-field">
+            <select name="type">
+                 <option value="Wardern">Wardern</option>
+                 <option value="Admin">Admin</option>
+            </select>
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Admin", "Edit")
+</div>
+
+

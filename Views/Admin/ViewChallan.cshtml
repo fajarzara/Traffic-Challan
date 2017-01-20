@@ -1,0 +1,65 @@
+﻿@if (Session["user"] == null)
+{
+    Response.Redirect("~/Home/Index");
+}
+
+@model List<Traffic_challan.Models.challan>
+
+<table>
+    <tr>
+        <th>
+           Name
+        </th>
+        <th>
+            License Number
+        </th>
+        <th>
+            Vehicle Number
+        </th>
+        <th>
+            Reason
+        </th>
+        <th>
+            Vehicle
+        </th>
+        <th>
+            Wardern Name
+        </th>
+
+        <th>
+            Price
+        </th>
+
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+           @item.Name
+        </td>
+        <td>
+            @item.LicenseNumber
+        </td>
+        
+        <td>
+           @item.VehicleNumber
+        </td>
+
+        <td>
+           @item.Reason
+        </td>
+        <td>
+           @item.Vehicle
+        </td>
+        <td>
+           @item.WardernName
+        </td>
+        
+        <td>
+           @item.Price
+        </td>
+        
+    </tr>
+}
+
+</table>

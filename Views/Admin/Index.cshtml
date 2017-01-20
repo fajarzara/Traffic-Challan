@@ -1,0 +1,17 @@
+﻿@if (Session["user"] == null)
+{
+    Response.Redirect("~/Home/Index");
+}
+
+@{
+    ViewBag.Title = "CRUD";
+}
+
+<body>
+
+   <a href="/Admin/Views" class="button">Manage Warden</a>
+   <a href="/Admin/ViewChallan" class="button">Challans Details</a>
+    
+    
+   
+</body>
